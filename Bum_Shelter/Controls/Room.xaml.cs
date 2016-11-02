@@ -24,6 +24,7 @@ namespace Bum_Shelter.Controls
         public Thickness RealMargin;
         public List<Human> HumansInRoom = new List<Human>();
 
+
         public enum RoomKind
         {
             Entering,
