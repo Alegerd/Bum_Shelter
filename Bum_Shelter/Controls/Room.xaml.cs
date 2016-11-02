@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Bum_Shelter.Controls;
 
 namespace Bum_Shelter.Controls
 {
@@ -35,19 +36,37 @@ namespace Bum_Shelter.Controls
         public Room()
         {
             InitializeComponent();
-            MouseUp += OnMouseUp;           
+            MouseUp += OnMouseUp;
+            humansInRoomLbl.Content = HumansInRoom.Count();
         }
 
         private void OnMouseUp(object sender, MouseButtonEventArgs e)
         {
+            AcceptHumanEntering();
+        }
+
+        public void AcceptHumanEntering()
+        {
             if (Constants.choosenHuman != null)
             {
-                HumansInRoom.Add(Constants.choosenHuman);
-                Constants.choosenHuman.distanation = new Thickness(RealMargin.Left + Constants.rnd.Next(0, 300) ,RealMargin.Top,0,0);
+                Constants.choosenHuman.distanation = new Thickness(RealMargin.Left + Constants.rnd.Next(0, 300), RealMargin.Top, 0, 0);
                 Constants.choosenHuman.Move();
                 Constants.choosenHuman.humanState = Human.HumanState.isWalking;
-                Constants.choosenHuman = null;
+
+                if (!HumansInRoom.Contains(Constants.choosenHuman))
+                {
+                    HumansInRoom.Add(Constants.choosenHuman);
+                }
+
+                humansInRoomLbl.Content = HumansInRoom.Count();
+                Constants.choosenHuman = null;//человек больше не в фокусе
             }
+        }
+
+        public void AcceptHumanLiving(Human human)
+        {
+            HumansInRoom.Remove(human);
+            humansInRoomLbl.Content = HumansInRoom.Count();
         }
     }
 }

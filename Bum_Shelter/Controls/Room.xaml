@@ -9,5 +9,6 @@
     <Grid>
         <Image x:Name="RoomImage"/>
         <Image Source="../Textures/SomeGround.png"/>
+        <Label x:Name="humansInRoomLbl" Content="0" HorizontalAlignment="Left" Margin="32,28,0,0" VerticalAlignment="Top" Height="100" Width="60" FontSize="64" Foreground="Red"/>
     </Grid>
 </UserControl>

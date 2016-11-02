@@ -48,6 +48,9 @@ namespace Bum_Shelter.Controls
         }
         public HumanState humanState;
 
+        public delegate void HumanLivesRoomDel(Human thisHuman);
+        public event HumanLivesRoomDel HumanLivesRoom;
+
         #region Directions
         enum Direction
         {
@@ -229,6 +232,8 @@ namespace Bum_Shelter.Controls
 
         public void Move()
         {
+            HumanLivesRoom(this);//событие покидания комнаты
+
             ThicknessAnimation anim = new ThicknessAnimation();
             anim.From = Margin;
             anim.To = distanation;

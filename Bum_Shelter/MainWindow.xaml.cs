@@ -60,8 +60,20 @@ namespace Bum_Shelter
         private void CreateHuman()
         {
             Human newHuman = new Human();
+            SignHumanToAllEvents(newHuman);
             newHuman.Margin = new Thickness(0, 370, 0, 0);
             MainCanvas.Children.Add(newHuman);
+        }
+
+        private void SignHumanToAllEvents(Human human)
+        {
+            foreach (var room in House.Rooms)
+            {
+                if (room != null)
+                {
+                    human.HumanLivesRoom += room.AcceptHumanLiving;
+                }
+            }
         }
 
         private void DoorBtn_MouseDown(object sender, MouseButtonEventArgs e)
@@ -129,22 +141,6 @@ namespace Bum_Shelter
         {
             Point p = Mouse.GetPosition(MainCanvas);
             TryToMakeRoom(p);
-            //if (p.X < 527 && p.Y > 509)
-            //{
-            //    Enter er = new Enter();
-            //    er.RealMargin = new Thickness(0 + 100, 600 + 70, 0, 0);
-            //    Grid.SetColumn(er, 0);
-            //    Grid.SetRow(er, 2);
-            //    MainGrid.Children.Add(er);
-            //}
-            //if (p.X > 527 && p.X < 1054 && p.Y > 509)
-            //{
-            //    Enter er = new Enter();
-            //    er.RealMargin = new Thickness(527 + 100, 600 + 70, 0, 0);
-            //    Grid.SetColumn(er, 1);
-            //    Grid.SetRow(er, 2);
-            //    MainGrid.Children.Add(er);
-            //}
         }
 
         private void TryToMakeRoom(Point p)
