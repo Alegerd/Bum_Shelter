@@ -37,6 +37,7 @@ namespace Bum_Shelter
             MakeClouds();
             foreach (Cloud cloud in Clouds) { cloud.AnimateVertical(); }
             MakeEnteringRoom();
+
         }
 
         private void MakeClouds()
