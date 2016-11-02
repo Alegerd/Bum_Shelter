@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="Bum_Shelter.Controls.DoorBtn"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Bum_Shelter.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="150" d:DesignWidth="250" RenderTransformOrigin="0.5,0.5">
+    <UserControl.RenderTransform>
+        <TransformGroup>
+            <ScaleTransform ScaleY="1" ScaleX="1"/>
+            <SkewTransform AngleY="0" AngleX="0"/>
+            <RotateTransform Angle="0"/>
+            <TranslateTransform/>
+        </TransformGroup>
+    </UserControl.RenderTransform>
+    <Grid>
+        <Image Source="..\Textures\NewDoorBtn.png" />
+    </Grid>
+</UserControl>
